@@ -45,7 +45,7 @@ select * from practice;
 update practice SET temp_col='NotTemproary' where serial_no=1;
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
--- DELETING FROM A TABLE
+-- DELETING Data FROM A TABLE
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 DELETE FROM practice where serial_no=2;
