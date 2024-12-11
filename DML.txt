@@ -1,0 +1,18 @@
+DML (Data Manipulation Language) is used to manage and manipulate the data within database tables.
+Unlike DDL, which deals with the structure of the database, DML focuses on the data itself.
+
+________________________________________________________________________________________________________________________
+Command|	Description	                           | Example                                                            |
+________________________________________________________________________________________________________________________
+SELECT |Retrieves data from one or more tables	   | SELECT * FROM employees;                                           |
+INSERT |Adds new rows of data into a table	       | INSERT INTO employees (id, name) VALUES (1, 'John');               |
+UPDATE |Modifies existing data in a table	       | UPDATE employees SET name='John Doe' WHERE id=1;                   |
+DELETE |Deletes rows of data from a table	       | DELETE FROM employees WHERE id=1;                                  |
+__________________________________________________________________________________________________________________________
+
+Why Use DML?
++++++++++++++++
+Data Retrieval: To query and view data stored in the database.
+Data Insertion: To add new records to a table.
+Data Modification: To update or modify existing records.
+Data Deletion: To remove records from a table.
