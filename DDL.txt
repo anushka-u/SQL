@@ -1,3 +1,6 @@
+DDL (Data Definition Language) is used to define, create, modify, and delete database structures such as tables, indexes, and schemas.
+It focuses on the database structure rather than the data itself.
+
 _________________________________________________________________________________________________________________________________
 Command	Description	Example
 _________________________________________________________________________________________________________________________________
