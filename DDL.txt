@@ -1,0 +1,15 @@
+_________________________________________________________________________________________________________________________________
+Command	Description	Example
+_________________________________________________________________________________________________________________________________
+CREATE	  |  Creates new tables, databases, or objects	           | CREATE TABLE students (id INT, name VARCHAR(50));         |
+ALTER	  | Modifies existing database structures	               | ALTER TABLE students ADD age INT;                         |
+DROP	  | Deletes entire tables or databases	                   | DROP TABLE students;                                      |
+TRUNCATE  |Deletes all data from a table but keeps the structure   |TRUNCATE TABLE students;                                   |
+RENAME	  |  Renames a table or database	                       | RENAME TABLE students TO learners;                        |
+________________________________________________________________________________________________________________________________
+
+Why Use DDL?
++++++++++++++++
+Structure Management: Defines how data is stored.
+Schema Evolution: Supports updates to existing tables.
+Database Design: Essential for creating and maintaining database models.
