@@ -1,0 +1,63 @@
+DESCRIBE command (also known as DESC in some database systems) -------->  is used in SQL to provide
+detailed information about the structure of a table. It shows the column names, their data
+types, whether they can be NULL, and any other constraints or attributes defined for each column in the table.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+2. INDEX IN DBMS ---
+
+An index in a database management system (DBMS) is a data structure that improves the speed of data retrieval
+operations on a table. It works like a book's index, allowing the database to quickly locate and access rows
+based on the values in specific columns, without having to scan the entire table.
+
+Key Points:
+Improves Query Performance: Indexes speed up data retrieval, especially for SELECT queries with WHERE, JOIN,
+or ORDER BY clauses.
+Unique Constraints: Can enforce uniqueness (e.g., primary keys or unique keys).
+
+Types of Indexes:
+Primary Index: Automatically created on the primary key.
+Unique Index: Ensures that all values in the indexed column(s) are unique.
+Composite Index: Index on multiple columns.
+Full-text Index: Used for searching text data.
+
+Drawbacks: While indexes speed up reads, they can slow down INSERT, UPDATE, and DELETE operations, as the index
+needs to be updated.
+
+In summary, an index is used to speed up data access at the cost of additional storage and maintenance overhead.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Que: Why do we need to create an index to add foreign key constraint? Can we not add fk constraint without creating index
+Ans : You can add a foreign key (FK) constraint without explicitly creating an index, but creating an index on the foreign key column is highly
+ recommended and often required for performance reasons, especially in larger tables.
+
+
+Why do we create an index for a foreign key?
+_________________________________________________________
+      Performance:
+
+      When you add a foreign key constraint, the database needs to check for referential integrity (i.e., whether a value in the foreign key column exists in the referenced table's primary key).
+      An index on the foreign key column allows the database to perform this check faster using a search algorithm (like binary search), rather than scanning the entire table.
+      Enforcing Referential Integrity Efficiently:
+
+      Without an index, operations like DELETE or UPDATE on the referenced table (parent table) may become slower, as the database needs to check for dependent rows in the child table.
+      Indexes speed up these checks, especially when there are many rows in the table.
+      Foreign Key Lookup:
+
+      Whenever you perform a query involving the foreign key column (like JOIN or WHERE clauses), the index speeds up the search, making operations more efficient.
+
+
+Can we add a FK constraint without creating an index?
+_______________________________________________________
+      Yes, technically, it is possible to create a foreign key constraint without creating an index on the foreign key column. However, most modern DBMS like MySQL and PostgreSQL either automatically create an index for you or recommend creating one for optimal performance.
+      In some systems (e.g., PostgreSQL), an index on the foreign key column is not automatically created. If you don’t create one manually, foreign key checks can become inefficient.
+      Conclusion:
+      While you can technically add a foreign key constraint without creating an index, it's best practice to create an index on the foreign key column to improve query performance, maintain referential integrity, and speed up operations like INSERT, DELETE, and UPDATE.
+
+
+QUE : my fk wasn't being created untill I didn't create index, why was this behaviour in mysql?
+________________________________________________________________________________________
+ANS --  In MySQL, when you try to add a foreign key constraint, MySQL requires an index on the foreign key column to ensure efficient lookup and enforcement of the constraint. If the index is not present, the foreign key creation will fail. This is why you had to create the index manually before the foreign key constraint could be applied.
+
