@@ -1,0 +1,87 @@
+1- CHECK constraint in SQL is used to limit the values that can be stored in a column.
+It ensures that the data in a column meets a specific condition or set of conditions.
+
+Syntax : CREATE TABLE table_name (
+             column_name datatype,
+             CONSTRAINT constraint_name CHECK (condition)
+         );
+
+Example Usage:
+Restricting Values in a Column:
+        CREATE TABLE employees (
+            id INT,
+            name VARCHAR(50),
+            age INT,
+            salary DECIMAL(10, 2),
+            CONSTRAINT age_check CHECK (age >= 18 AND age <= 65),
+            CONSTRAINT salary_check CHECK (salary >= 30000)
+        );
+
+Check for Specific Values:
+    CREATE TABLE students (
+        id INT,
+        name VARCHAR(50),
+        gender VARCHAR(10),
+        CONSTRAINT gender_check CHECK (gender IN ('M', 'F'))
+    );
+
+Points to Note:
+(i)- Data Integrity: The CHECK constraint ensures that data stored in the table meets specified conditions.
+(ii)--Enforcement: In many databases, the CHECK constraint is enforced automatically by the DBMS, but in some cases
+ (e.g., older versions of MySQL), it may not be enforced unless you explicitly enable it.
+(iii)--- Multiple Conditions: You can combine multiple conditions in a CHECK constraint using logical operators like AND, OR, etc.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+NOT NULL CONSTRAINT
+_____________________
+The NOT NULL constraint in SQL is used to ensure that a column cannot have a NULL value. It enforces that every row in the table must have a valid value for that column, i.e., the column cannot remain empty.
+
+Syntax:
+    CREATE TABLE table_name (
+        column_name datatype NOT NULL
+    );
+
+Why Use NOT NULL?
+Data Integrity: Ensures that important columns (like names, IDs, etc.) always have a valid value.
+Business Logic: Enforces that certain data must be provided, such as a customer's email address or product price.
+Query Simplification: It eliminates the need for NULL checks in queries for important columns, simplifying data retrieval and updates.
+
+Points to Note:
+By default, most database systems allow columns to store NULL unless explicitly specified with NOT NULL.
+Primary Key columns inherently have the NOT NULL constraint because they must uniquely identify each record in the table.
+If you try to insert a NULL value into a column with the NOT NULL constraint, the database will raise an error.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+PRIMARY KEY
+_______________
+
+The PRIMARY KEY constraint is used to uniquely identify each record in a database table.
+ A primary key ensures that the values in the specified column(s) are unique and not null,
+ meaning no two rows can have the same value in the primary key column, and no row can have a null value in the primary key column.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+A Foreign Key is a column (or a set of columns) in one table that references the Primary Key (or a Unique Key) in another table. It establishes a relationship between the two tables, ensuring data integrity and enforcing referential constraints.
+
+Key Characteristics of a Foreign Key:
+Referential Integrity:
+A foreign key ensures that the value in the foreign key column matches a value in the
+referenced primary key column of anothertable (or the same table in case of self-referencing).
+
+Parent-Child Relationship:
+The table containing the foreign key is called the child table, and the table that is referenced
+is called the parent table.
+
+Cascading Actions:
+Foreign keys can have actions such as CASCADE, SET NULL, or RESTRICT when data in the parent table
+is updated or deleted.
+
+
+Referential Actions:
+______________________
+CASCADE: Deletes or updates the child records when the parent record is deleted or updated.
+SET NULL: Sets the foreign key column in the child table to NULL when the parent record is deleted or updated.
+RESTRICT/NO ACTION: Prevents the deletion or update of the parent record if there are related child records.
+SET DEFAULT: Sets the foreign key column in the child table to a default value when the parent record is deleted or updated.
